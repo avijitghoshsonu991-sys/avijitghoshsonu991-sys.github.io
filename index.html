@@ -12,7 +12,7 @@
     background: #0a0f1c; color: #e2e8f0; line-height: 1.6;
     overflow-x: hidden;
   }
-  .container { max-width: 1050px; margin: 0 auto; padding: 0 20px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
   /* NAVBAR */
   nav {
@@ -61,7 +61,7 @@
     transition: 0.25s; border: none; cursor: pointer;
   }
   .btn:hover { background: #0ea5e9; transform: translateY(-3px); }
-  .btn-whatsapp { background: #25d366; color: #fff; }
+  .btn-whatsapp { background: #25d366; color: #fff; width: 100%; margin-top: 15px;}
   .btn-whatsapp:hover { background: #1ebe5b; }
 
   /* GRAPH */
@@ -90,7 +90,7 @@
   .subtitle { text-align: center; color: #94a3b8; margin-bottom: 40px; }
 
   /* SERVICES */
-  .grid {
+  .grid-services {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 20px;
   }
@@ -103,36 +103,51 @@
   .service h3 { color: #f8fafc; font-size: 1.1rem; margin-bottom: 6px; }
   .service p { color: #94a3b8; font-size: 0.92rem; }
 
-  /* PRICING */
+  /* PRICING GRID (5 PLANS) */
+  .pricing-grid {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px; align-items: stretch; margin-top: 20px;
+  }
   .pricing-card {
     background: linear-gradient(145deg, #111827, #0f172a);
-    border: 2px solid #38bdf8; border-radius: 16px;
-    max-width: 480px; margin: 0 auto; padding: 40px 32px;
-    text-align: center; position: relative;
-    animation: pulse 2.5s infinite;
+    border: 1px solid #1e293b; border-radius: 16px;
+    padding: 30px 20px; text-align: center; position: relative;
+    display: flex; flex-direction: column; transition: 0.3s;
   }
+  .pricing-card:hover { border-color: #38bdf8; transform: translateY(-5px); }
+  
+  /* Highlight Business Growth Pro */
+  .pricing-card.popular {
+    border: 2px solid #38bdf8;
+    animation: pulse 2.5s infinite;
+    transform: scale(1.03);
+    z-index: 2;
+  }
+  .pricing-card.popular:hover { transform: scale(1.05) translateY(-5px); }
+
   .badge {
     position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
     background: #38bdf8; color: #0a0f1c; padding: 6px 18px;
     border-radius: 20px; font-size: 0.8rem; font-weight: bold;
+    white-space: nowrap;
   }
-  .pricing-card h3 { font-size: 1.5rem; color: #f8fafc; margin-bottom: 6px; }
-  .price { font-size: 2.6rem; color: #38bdf8; font-weight: bold; margin: 12px 0; }
-  .price span { font-size: 1rem; color: #94a3b8; font-weight: normal; }
-  .pricing-card ul { list-style: none; text-align: left; margin: 24px 0; }
+  .pricing-card h3 { font-size: 1.2rem; color: #f8fafc; margin-bottom: 6px; }
+  .price { font-size: 2rem; color: #38bdf8; font-weight: bold; margin: 10px 0; }
+  .price span { font-size: 0.85rem; color: #94a3b8; font-weight: normal; }
+  .pricing-card ul { list-style: none; text-align: left; margin: 20px 0; flex-grow: 1; }
   .pricing-card ul li {
-    padding: 10px 0; border-bottom: 1px solid #1e293b;
-    color: #cbd5e1; font-size: 0.95rem;
+    padding: 8px 0; border-bottom: 1px solid #1e293b;
+    color: #cbd5e1; font-size: 0.85rem;
   }
   .pricing-card ul li::before {
-    content: "✔"; color: #38bdf8; margin-right: 10px; font-weight: bold;
+    content: "✔"; color: #38bdf8; margin-right: 8px; font-weight: bold;
   }
   .gift {
-    background: #1e293b; border-radius: 8px; padding: 10px;
-    color: #fbbf24; font-size: 0.9rem; margin-top: 10px;
+    background: #1e293b; border-radius: 8px; padding: 8px;
+    color: #fbbf24; font-size: 0.8rem; margin-top: 10px;
   }
-  .plan-actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
-  .plan-actions .btn { margin-top: 0; font-size: 0.9rem; padding: 12px 24px; }
+  .plan-actions { margin-top: auto; }
 
   /* TRUST LOGOS */
   .trust {
@@ -170,6 +185,10 @@
     font-size: 1.6rem; text-decoration: none; animation: pulse 2s infinite;
   }
 
+  @media (max-width: 900px) {
+    .pricing-card.popular { transform: scale(1); }
+    .pricing-card.popular:hover { transform: translateY(-5px); }
+  }
   @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
     nav a { margin-left: 12px; font-size: 0.82rem; }
@@ -195,7 +214,7 @@
   <div class="hero">
     <h1 class="animate">Grow Your Business with <span>SWIPE SEARCH</span></h1>
     <p class="animate delay-1">We help businesses scale with data-driven social media, Meta Ads, and Google Ads management — all in one monthly plan.</p>
-    <a href="#pricing" class="btn animate delay-2">View Our Plan →</a>
+    <a href="#pricing" class="btn animate delay-2">View Our Plans →</a>
 
     <!-- MARKET TREND GRAPH -->
     <div class="graph-box animate delay-3">
@@ -218,7 +237,7 @@
   <section id="services">
     <h2>What We Do</h2>
     <p class="subtitle">Everything your business needs to grow online</p>
-    <div class="grid">
+    <div class="grid-services">
       <div class="service">
         <div class="icon">📱</div>
         <h3>Social Media Management</h3>
@@ -242,28 +261,87 @@
     </div>
   </section>
 
-  <!-- PRICING -->
+  <!-- PRICING (5 PLANS) -->
   <section id="pricing">
-    <h2>Our Plan</h2>
-    <p class="subtitle">One simple plan. Everything included.</p>
-    <div class="pricing-card">
-      <div class="badge">MOST POPULAR</div>
-      <h3>Business Growth Pro</h3>
-      <div class="price">₹9,999 <span>/ month</span></div>
-      <ul>
-        <li>Social Media Management</li>
-        <li>Meta Ads Management</li>
-        <li>Google Ads Management</li>
-        <li>Website Maintenance</li>
-        <li>Monthly Strategy Report</li>
-        <li>One Special Gift 🎁</li>
-      </ul>
-      <div class="plan-actions">
-        <a href="https://wa.me/919635548266?text=Hi%20SWIPE%20SEARCH%2C%20I%20want%20to%20enquire%20about%20the%20Business%20Growth%20Pro%20plan%20(%E2%82%B99%2C999%2Fmonth)."
-           target="_blank" class="btn btn-whatsapp">💬 Enquire on WhatsApp</a>
-        <a href="plan.html" class="btn">View Plan Details →</a>
+    <h2>Find the Perfect Plan</h2>
+    <p class="subtitle">Choose the plan that fits your business needs and budget</p>
+    
+    <div class="pricing-grid">
+      
+      <!-- Plan 1 -->
+      <div class="pricing-card">
+        <h3>Starter Plan</h3>
+        <div class="price">₹2,999 <span>/ One Time</span></div>
+        <ul>
+          <li>Website Setup</li>
+          <li>Basic SEO Setup</li>
+          <li>Social Media Setup</li>
+        </ul>
+        <div class="plan-actions">
+          <a href="https://wa.me/919635548266?text=Hi%2C%20I%20am%20interested%20in%20the%20Starter%20Plan%20(%E2%82%B92%2C999%20One%20Time)." target="_blank" class="btn btn-whatsapp">Enquire Now</a>
+        </div>
       </div>
-      <div class="gift">🎁 Plus a special gift for every new client!</div>
+
+      <!-- Plan 2 -->
+      <div class="pricing-card">
+        <h3>Basic Plan</h3>
+        <div class="price">₹3,999 <span>/ month</span></div>
+        <ul>
+          <li>Social Media (10 Posts)</li>
+          <li>Basic Meta Ads</li>
+          <li>Monthly Report</li>
+        </ul>
+        <div class="plan-actions">
+          <a href="https://wa.me/919635548266?text=Hi%2C%20I%20am%20interested%20in%20the%20Basic%20Plan%20(%E2%82%B93%2C999%2Fmonth)." target="_blank" class="btn btn-whatsapp">Enquire Now</a>
+        </div>
+      </div>
+
+      <!-- Plan 3 -->
+      <div class="pricing-card">
+        <h3>Standard Plan</h3>
+        <div class="price">₹4,999 <span>/ month</span></div>
+        <ul>
+          <li>Social Media (15 Posts)</li>
+          <li>Meta Ads Management</li>
+          <li>Website Maintenance</li>
+        </ul>
+        <div class="plan-actions">
+          <a href="https://wa.me/919635548266?text=Hi%2C%20I%20am%20interested%20in%20the%20Standard%20Plan%20(%E2%82%B94%2C999%2Fmonth)." target="_blank" class="btn btn-whatsapp">Enquire Now</a>
+        </div>
+      </div>
+
+      <!-- Plan 4 -->
+      <div class="pricing-card">
+        <h3>Premium Plan</h3>
+        <div class="price">₹5,999 <span>/ month</span></div>
+        <ul>
+          <li>Social Media (20 Posts)</li>
+          <li>Meta + Google Ads</li>
+          <li>Website Maintenance</li>
+        </ul>
+        <div class="plan-actions">
+          <a href="https://wa.me/919635548266?text=Hi%2C%20I%20am%20interested%20in%20the%20Premium%20Plan%20(%E2%82%B95%2C999%2Fmonth)." target="_blank" class="btn btn-whatsapp">Enquire Now</a>
+        </div>
+      </div>
+
+      <!-- Plan 5 (Popular) -->
+      <div class="pricing-card popular">
+        <div class="badge">BEST VALUE</div>
+        <h3>Business Growth Pro</h3>
+        <div class="price">₹9,999 <span>/ month</span></div>
+        <ul>
+          <li>Full Social Media Mgmt</li>
+          <li>Meta & Google Ads</li>
+          <li>Website Maintenance</li>
+          <li>Monthly Strategy Report</li>
+          <li>Special Gift 🎁</li>
+        </ul>
+        <div class="plan-actions">
+          <a href="https://wa.me/919635548266?text=Hi%2C%20I%20am%20interested%20in%20the%20Business%20Growth%20Pro%20(%E2%82%B99%2C999%2Fmonth)." target="_blank" class="btn btn-whatsapp">Enquire Now</a>
+        </div>
+        <div class="gift">🎁 Plus a special gift!</div>
+      </div>
+
     </div>
   </section>
 
